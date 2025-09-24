@@ -1,0 +1,6 @@
+@Backend_login_HostAddress = http://localhost:5025
+
+GET {{Backend_login_HostAddress}}/usuario/
+Accept: application/json
+
+###
