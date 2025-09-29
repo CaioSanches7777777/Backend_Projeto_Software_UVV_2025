@@ -22,8 +22,8 @@ namespace Backend_login.Services
             if (string.IsNullOrWhiteSpace(dto.Email) || !dto.Email.Contains("@"))
                 throw new ApplicationException("E-mail inválido.");
 
-            if (await _db.Users.AnyAsync(u => u.Email == dto.Email))
-                throw new ApplicationException("E-mail já cadastrado.");
+            /*if (await _db.Users.AnyAsync(u => u.Email == dto.Email))
+                throw new ApplicationException("E-mail já cadastrado.");*/
 
             if (string.IsNullOrWhiteSpace(dto.Password) || dto.Password.Length < 6)
                 throw new ApplicationException("A senha deve ter pelo menos 6 caracteres.");
