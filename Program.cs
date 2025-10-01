@@ -7,16 +7,16 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// PostgreSQL
+// PostgreSQL                                                                                     //verificar appsettings.json para configurar "DefaultConnection" com DB
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Injeção de Dependência
+// InjeÃ§Ã£o de DependÃªncia
 builder.Services.AddScoped<IRegisterService, RegisterService>();
 builder.Services.AddScoped<ILoginService, LoginService>();
 
-// Autenticação JWT
-var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]);
+// AutenticaÃ§Ã£o JWT                                                                               //verificar appsettings.json para definir a chave secreta
+var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]); 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
