@@ -5,9 +5,9 @@ namespace Backend_login.DTOs
     public class LoginDto
     {
         [Required, EmailAddress]
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         [Required, MinLength(6)]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
     }
 }

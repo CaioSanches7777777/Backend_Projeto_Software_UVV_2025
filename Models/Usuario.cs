@@ -4,19 +4,12 @@ namespace Backend_login.Models
 {
     public class Usuario
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
+        [Key] // <- Isso indica que é a chave primária
+        public int Id_Usuario { get; set; }
 
-        [Required]
-        [MinLength(3)]
-        public string Username { get; set; } = null!;
-
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = null!;
-
-        [Required]
-        public string PasswordHash { get; set; } = null!;
-
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string Nome { get; set; } = string.Empty;
+        public string Senha { get; set; } = string.Empty;
+        public string Endereco_Email { get; set; } = string.Empty;
+        public string? Imagem { get; set; }
     }
 }

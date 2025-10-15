@@ -1,26 +1,28 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Backend_login.Models
 {
+    [Table("paginas", Schema = "public")]
     public class Pagina
     {
-        public int Id { get; set; }
+        [Key, Column("id_pagina")]
+        public int IdPagina { get; set; }
 
+        [Column("id_wiki")]
         [Required]
-        [MaxLength(200)]
-        public string Title { get; set; } = string.Empty;
+        public int IdWiki { get; set; }
 
-        public string? Content { get; set; }
+        [Column("nsfw_flag")]
+        [Required]
+        public bool NsfwFlag { get; set; }
 
-        // Relacionamento para hierarquia
-        public int? ParentPageId { get; set; }
-        public Pagina? ParentPage { get; set; }
+        [Column("conteudo")]
+        [Required]
+        public string Conteudo { get; set; } = string.Empty;
 
-        public ICollection<Pagina>? SubPages { get; set; }
-
-        // Autor da página
-        public int UserId { get; set; }
-        public Usuario User { get; set; }
+        [Column("is_main")]
+        [Required]
+        public bool IsMain { get; set; }
     }
-
 }
